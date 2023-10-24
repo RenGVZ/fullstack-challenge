@@ -7,6 +7,7 @@ const morgan = require("morgan")
 const app = express()
 const bodyParser = require("body-parser")
 const cors = require("cors")
+const wishesRouter = require("./controllers/wishes")
 
 app.use(bodyParser())
 app.use(morgan())
@@ -23,17 +24,8 @@ app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/index.html")
 })
 
-app.post("/api/wish", (request, response) => {
-  const { name, wish } = request.body
-  console.log("name:", name, "wish:", wish)
-  if (!name || !wish) {
-    response.status(400).json({ error: "Missing name or wish" })
-  } else {
-    response
-      .status(200)
-      .json({ data: `Hello ${name}, I hope your wish to ${wish} comes true!` })
-  }
-})
+app.use("/api/wish", wishesRouter)
+
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT || 3000, function () {

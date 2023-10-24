@@ -7,9 +7,6 @@ const WishForm = () => {
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault()
-    console.log("name:", name)
-    console.log("wish:", wish)
-
     try {
       const res = await postWish(name, wish)
       console.log("res:", res)
