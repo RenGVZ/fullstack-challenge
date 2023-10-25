@@ -84,7 +84,7 @@ const WishForm = () => {
           value={name}
           name="userid"
           placeholder="charlie.brown"
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value.trim())}
         />
         what do you want for christmas?
         <textarea

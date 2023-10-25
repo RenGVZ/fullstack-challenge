@@ -17,12 +17,11 @@ app.use(cors())
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
 
 // http://expressjs.com/en/starter/static-files.html
-app.use(express.static("public"))
+app.use(express.static("dist"))
+
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get("/", (request, response) => {
-  response.sendFile(__dirname + "/views/index.html")
-})
+
 
 app.use("/api/wish", wishesRouter)
 

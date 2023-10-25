@@ -1,5 +1,5 @@
 import WishForm from "./components/WishForm"
-import "../../public/style.css"
+import "../styles/style.css"
 
 const App = () => {
   return (
