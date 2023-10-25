@@ -1,7 +1,8 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import App from "./App"
-import Success from "./components/Success"
+import SuccessPage from "./pages/SuccessPage"
+import ErrorPage from "./pages/ErrorPage"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 const router = createBrowserRouter([
@@ -11,8 +12,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/success",
-    element: <Success />,
+    element: <SuccessPage />,
   },
+  {
+    path: "/error",
+    element: <ErrorPage />,
+  }
 ])
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

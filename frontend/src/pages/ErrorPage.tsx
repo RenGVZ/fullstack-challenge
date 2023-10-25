@@ -1,12 +1,12 @@
 import React from "react"
 import { useLocation, Link } from "react-router-dom"
 
-const Success = () => {
+const ErrorPage = () => {
   const location = useLocation()
 
   return (
-    <div className="success">
-      <h1 className="h1">{location.state.message}</h1>
+    <div className="notification">
+      <h1 className="error-page">{location.state.message}</h1>
 
       <Link to="/" className="button">
         Back to home page
@@ -15,4 +15,4 @@ const Success = () => {
   )
 }
 
-export default Success
+export default ErrorPage

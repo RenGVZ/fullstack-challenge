@@ -1,6 +1,6 @@
 import { useState, SyntheticEvent, useEffect } from "react"
 import { postWish, postProgress } from "../api"
-import Error from "./Error"
+import WishError from "./WishError"
 import { useNavigate } from "react-router-dom"
 
 const WishForm = () => {
@@ -35,9 +35,8 @@ const WishForm = () => {
       } else {
         message = "Something went wrong, please try again later."
       }
-      setErrorMessage(message)
-      setError(true)
       setIsLoading(false)
+      navigate("/error", { state: { message } })
     }
   }
 
@@ -71,7 +70,7 @@ const WishForm = () => {
 
   return (
     <main>
-      {error && <Error errorMessage={errorMessage} />}
+      {error && <WishError errorMessage={errorMessage} />}
       <p className="bold">Ho ho ho, what you want for Christmas?</p>
       who are you?
       <form onSubmit={(e: SyntheticEvent) => handleSubmit(e)}>
