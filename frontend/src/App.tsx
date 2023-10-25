@@ -1,4 +1,3 @@
-import React, { SyntheticEvent, useState } from "react"
 import WishForm from "./components/WishForm"
 import "../../public/style.css"
 

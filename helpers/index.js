@@ -1,5 +1,5 @@
-const axios = require("axios")
 const { userProfilesUrl, usersUrl } = require("../config")
+const axios = require("axios")
 
 const validAge = 10
 

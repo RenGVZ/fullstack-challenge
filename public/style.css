@@ -23,7 +23,8 @@ p {
   max-width: 600px;
 }
 
-input, textarea {
+input,
+textarea {
   display: block;
   margin-bottom: 10px;
   padding: 5px;
@@ -58,4 +59,28 @@ footer {
   margin-top: 50px;
   padding-top: 25px;
   border-top: 1px solid lightgrey;
+}
+
+.notification {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 10vh;
+  width: 100vw;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notification > .error {
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.notification > .success {
+  color: green;
+  font-size: 16px;
+  font-weight: bold;
 }
