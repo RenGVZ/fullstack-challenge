@@ -1,20 +1,19 @@
 import { useState, SyntheticEvent, useEffect } from "react"
 import { postWish, postProgress } from "../api"
 import Error from "./Error"
-import Success from "./Success"
+import { useNavigate } from "react-router-dom"
 
 const WishForm = () => {
   const [name, setName] = useState("")
   const [wish, setWish] = useState("")
-  const [success, setSuccess] = useState(false)
-  const [successMessage, setSuccessMessage] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
+  const navigate = useNavigate()
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault()
-    if (!name || !wish) {
+    if (!name || isEmpty(wish)) {
       setErrorMessage("Please enter your name and wish.")
       setError(true)
       return
@@ -22,11 +21,8 @@ const WishForm = () => {
     setIsLoading(true)
     try {
       const res = await postWish(name, wish)
-      setSuccess(true)
-      setSuccessMessage(res.message)
-      setName("")
-      setWish("")
       setIsLoading(false)
+      navigate("/success", { state: { message: res.message } })
     } catch (err) {
       let message = null
       if (
@@ -64,18 +60,17 @@ const WishForm = () => {
     return () => clearTimeout(errorTimeout)
   }, [error, errorMessage])
 
-  useEffect(() => {
-    const successTimeout = setTimeout(() => {
-      setSuccess(false)
-      setSuccessMessage("")
-    }, 5000)
-
-    return () => clearTimeout(successTimeout)
-  }, [success])
+  const isEmpty = (str: string) => {
+    const trimmed = str.trim()
+    if(!str || trimmed.length === 0) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   return (
     <main>
-      {success && <Success message={successMessage} />}
       {error && <Error errorMessage={errorMessage} />}
       <p className="bold">Ho ho ho, what you want for Christmas?</p>
       who are you?

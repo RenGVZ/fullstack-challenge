@@ -1,13 +1,16 @@
 import React from "react"
+import { useLocation, Link } from "react-router-dom"
 
-type Props = {
-  message: string
-}
+const Success = () => {
+  const location = useLocation()
 
-const Success = ({ message }: Props) => {
   return (
-    <div className="notification">
-      <div className="success">{message}</div>
+    <div className="success">
+      <h1 className="h1">{location.state.message}</h1>
+
+      <Link to="/" className="button">
+        Back to home page
+      </Link>
     </div>
   )
 }

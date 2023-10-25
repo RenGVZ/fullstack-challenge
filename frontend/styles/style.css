@@ -79,8 +79,24 @@ footer {
   font-weight: bold;
 }
 
-.notification > .success {
+.success {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.success > h1 {
   color: green;
   font-size: 16px;
   font-weight: bold;
+}
+
+.success > .button {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(29, 128, 210);
+  border: 1px solid grey;
+  border-radius: 3px;
+  padding: 5px;
 }
